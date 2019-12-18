@@ -1,0 +1,9 @@
+(function(){
+    require.config({
+        baseUrl:'./module',
+        paths:{
+            init:'init'
+        }
+    })
+    require(['init'])
+}())

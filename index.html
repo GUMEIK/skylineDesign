@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>skyline课程设计</title>
+    <link rel="stylesheet" href="./index.css">
+    <script>
+
+// SGWorld701
+function CreateSGObj() {
+    try {
+        var obj = document.getElementById("SGWorld");
+        if (obj == null) {
+            obj = document.createElement('object');
+            obj.setAttribute("name", "SGWorld");
+            obj.setAttribute("id", "SGWorld");
+            obj.style.height = "1px";
+            obj.style.width = "1px";
+            // CLSID:3A4F919C-65A8-11D5-85C1-0001023952C1
+            obj.setAttribute("classid", "CLSID:3A4F919C-65A8-11D5-85C1-0001023952C1");
+            document.body.appendChild(obj);
+        }
+        return obj;
+    } catch (e) {
+        alert(e);
+    }
+}
+    </script>
+</head>
+<body onunload="DelTemp('视频监控范围')">
+    <!-- <div id="canvas"></div> -->
+    <div class="wrapper">
+        <div class="leftContent">
+            <!-- 工程树(图层管理树) -->
+            <object id="TerraExplorerInformationWindowEx" classid="clsid:3a4f919b-65a8-11d5-85c1-0001023952c1"></object>
+            <div class="opationMenu">
+                <ul>
+                    <li><button type="button" id="start">start</button></li>
+                    <li><button type="button" id="end">end</button></li>
+                    <li><button type="button" id="openProj">打开项目</button></li>
+                    <li><button type="button" id="createCicle">创建一个圆</button></li>
+                    <li><button type="button" id="getCurPosition">获得当前位置</button></li>
+                    <li><button type="button" id="CreatePolygon">创建多边形</button></li>
+                    <li><button type="button" id="ZoomIn">放大</button></li>
+                    <li><button type="button" id="ZoomOut">缩小</button></li>
+                    <li><button type="button" id="createLine">创建线</button></li>
+                    <li><button type="button" id="createPoint">创建点</button></li>
+                    <li><button type="button" id="measureArea">测量面积</button></li>
+                    <li><button type="button" id="createGroup">创建组</button></li>
+                </ul>
+                <table style="margin: 0px; border: 0px;">
+                    <tr>
+                         <td colspan="4">
+                             <input id="Button6" type="button" value="鼠标选择监控位置创建" onclick="StartCal()" />       
+                             <input id="Button1" type="button" value="清除" onclick="DelTemp('视频监控范围')" />
+                             <div id="ss" ></div>
+                         </td>
+                    </tr>      
+                </table>
+            </div>
+        </div>
+        <div class="rightContent">
+            <!-- 三维地图控件 -->
+            <object id="TerraExplorer3DWindowEx" classid="CLSID:3a4f9196-65a8-11d5-85c1-0001023952c1"></object>
+        </div>
+        <!-- SGWorld对象 -->
+        <object id="SGWorld" classid="CLSID:3A4F919C-65A8-11D5-85C1-0001023952C1" style="width:0;height: 0;"></object>
+    </div>
+    <script>
+
+    
+    </script>
+    <script src="./lib/require.js" data-main="./index.js"></script>
+</body>
+
+</html>
