@@ -7,3 +7,7 @@
     })
     require(['init'])
 }())
+// 定义全局变量
+window.isCreate3DViewshed = false;
+
+

@@ -67,7 +67,7 @@ define(function () {
         }
     }
 
-    function CreatePolygon(coordinate) {
+    function CreatePolygon(coordinate,flag) {
         // 返回值为创建出来的几何对象
         try {
             {
@@ -96,7 +96,7 @@ define(function () {
                 var nFillColor = 0x7FFF0000; // Abgr value -> 50% transparent blue
                 var eAltitudeTypeCode = 0; //AltitudeTypeCode.ATC_TERRAIN_RELATIVE;
                 // D2. Create polygon
-                cPolygon = SGWorld.Creator.CreatePolygon(cPolygonGeometry, nLineColor, nFillColor, eAltitudeTypeCode, "", "Polygon");
+                cPolygon = SGWorld.Creator.CreatePolygon(cPolygonGeometry, nLineColor, nFillColor, eAltitudeTypeCode, flag ?  SGWorld.ProjectTree.HiddenGroupID : '', "Polygon");
             } {
                 SGWorld.Navigate.FlyTo(cPolygon);
             }
@@ -106,7 +106,7 @@ define(function () {
         }
     }
     // 创建线
-    function createLine(arg) {
+    function createLine(arg,groupID) {
         // GeometryCreator 创建几何对象的方法
         // CreateLineStringGeometry 创建一个线对象
         // "LineString(110.9898247 19.64392506 30,110.9896247 19.64653288 30,110.9876747 19.64603288 30)"
@@ -129,14 +129,14 @@ define(function () {
        Description   描述
 	 * }
 	 */
-        var line = SGWorld.Creator.CreatePolyline(geometry, color, 0, '', "几何折线");
+        var line = SGWorld.Creator.CreatePolyline(geometry, color, 0, groupID ?  SGWorld.ProjectTree.HiddenGroupID : '', "几何折线");
         //飞行到该折线
         SGWorld.Navigate.FlyTo(line);
         // CreatDistanceLabel(110.9898247, 19.64392506, 110.9896247, 19.64653288);
         // CreatDistanceLabel(110.9896247, 19.64653288, 110.9876747, 19.64603288);
 
     }
-    // 测量距离
+    // 测量面积
     function measureArea(pIGeometry) {
         // 传入几何对象
         // SGWorld.An

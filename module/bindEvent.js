@@ -28,11 +28,13 @@ define('bindEvent', [
     // 创建线
     el.createLineBtn.onclick = function () {
         geo.createLine(coordinateArr)
+        coordinateArr = [];
     }
     // 测量面积
     el.measureAreaBtn.onclick = function () {
-        let area = geo.measureArea(geo.CreatePolygon(coordinateArr));
-        console.log(area)
+        let area = geo.measureArea(geo.CreatePolygon(coordinateArr,true));
+        alert(area)
+        coordinateArr = [];
     }
     // 创建组
     el.createGroupBtn.onclick = function () {
@@ -44,25 +46,26 @@ define('bindEvent', [
     // OnLButtonClicked 按下事件
     // 定义收集点的数组
     var coordinateArr = []
-    // SGWorld.AttachEvent("OnLButtonClicked", function (flag, x, y) {
+    SGWorld.AttachEvent("OnLButtonClicked", function (flag, x, y) {
         // SGWorld.Window.SetInputMode(1);
         // alert(`${flag}${x}${y}`)
         // alert('x='+ x + 'y=' + y + 'flag' + flag)
         // return false;
         // 返回窗口中指定像素的真实世界坐标
         // debugger;
-        // let realWorld = SGWorld.window.PixelToWorld(x, y, 1);
+        let realWorld = SGWorld.window.PixelToWorld(x, y, 1);
         // 真实世界的经度
-        // let realX = realWorld.Position.X,
+        let realX = realWorld.Position.X,
             // 维度
-            // realY = realWorld.Position.Y;
-        // coordinateArr.push(realX, realY)
-        // coordinateArr.push(30)
+            realY = realWorld.Position.Y;
+        coordinateArr.push(realX, realY);
+        coordinateArr.push(30);
         // console.log(coordinateArr)
-        // geo.createLine(coordinateArr)
+        // 将创建出来的线放入隐藏组
+        geo.createLine(coordinateArr,true);
         // CreatePolygon(coordinateArr)
         // console.log(realX)
         // console.log(realY)
         // console.log(realWorld)
-    // })
+    })
 });
