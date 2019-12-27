@@ -71,7 +71,6 @@ define(function () {
         // 返回值为创建出来的几何对象
         try {
             {
-                //B1. Create vertices double array, each point in format x,z,y
                 var cVerticesArray = coordinate || [
                     -122.415025, 37.76059, 10,
                     -122.415868, 37.760546, 11,
@@ -80,17 +79,13 @@ define(function () {
                     -122.415557, 37.760973, 14,
                     -122.415081, 37.76099, 15
                 ];
-                // B2. Create linear ring using vertices
                 {
                     var cRing = SGWorld.Creator.GeometryCreator.CreateLinearRingGeometry(cVerticesArray);
                 }
             }
-            // C. Create polygon geometry using linear ring
-            //
             {
                 var cPolygonGeometry = SGWorld.Creator.GeometryCreator.CreatePolygonGeometry(cRing, null);
             }
-            // D. Create polygon using polygon geometry
             {
                 var nLineColor = 0xFF00FF00; // Abgr value -> solid green
                 var nFillColor = 0x7FFF0000; // Abgr value -> 50% transparent blue
@@ -132,9 +127,6 @@ define(function () {
         var line = SGWorld.Creator.CreatePolyline(geometry, color, 0, groupID ?  SGWorld.ProjectTree.HiddenGroupID : '', "几何折线");
         //飞行到该折线
         SGWorld.Navigate.FlyTo(line);
-        // CreatDistanceLabel(110.9898247, 19.64392506, 110.9896247, 19.64653288);
-        // CreatDistanceLabel(110.9896247, 19.64653288, 110.9876747, 19.64603288);
-
     }
     // 测量面积
     function measureArea(pIGeometry) {

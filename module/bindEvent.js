@@ -63,9 +63,5 @@ define('bindEvent', [
         // console.log(coordinateArr)
         // 将创建出来的线放入隐藏组
         geo.createLine(coordinateArr,true);
-        // CreatePolygon(coordinateArr)
-        // console.log(realX)
-        // console.log(realY)
-        // console.log(realWorld)
     })
 });
